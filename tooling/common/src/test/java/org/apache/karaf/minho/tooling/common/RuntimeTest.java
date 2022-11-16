@@ -31,7 +31,6 @@ import java.util.Map;
 public class RuntimeTest {
 
     @Test
-    @Disabled("Failing on GH Action")
     public void createPackageTest() throws Exception {
         Map<String, Object> properties = new HashMap<>();
         properties.put("base.directory", "target/runtime/test-package");
@@ -39,6 +38,7 @@ public class RuntimeTest {
         Runtime runtime = new Runtime("test-package", "1.0-SNAPSHOT", properties);
         runtime.getDependencies().add("minho:minho-boot");
         runtime.getDependencies().add("minho-http");
+        runtime.getDependencies().add("minho-rest");
         
         runtime.createPackage();
 
@@ -49,11 +49,11 @@ public class RuntimeTest {
 
         Assertions.assertTrue(Files.exists(libFolder.resolve("minho-boot-1.0-SNAPSHOT.jar")));
         Assertions.assertTrue(Files.exists(libFolder.resolve("minho-http-1.0-SNAPSHOT.jar")));
-        Assertions.assertTrue(Files.exists(libFolder.resolve("jetty-server-11.0.9.jar")));
+        Assertions.assertTrue(Files.exists(libFolder.resolve("minho-rest-1.0-SNAPSHOT.jar")));
+        Assertions.assertTrue(Files.exists(libFolder.resolve("jetty-server-11.0.12.jar")));
     }
 
     @Test
-    @Disabled("Failing on GH Action")
     public void createPackageViaMinhoBuild() throws Exception {
         Runtime.createPackage(new FileInputStream("target/test-classes/minho-build.json"));
 
@@ -64,12 +64,12 @@ public class RuntimeTest {
 
         Assertions.assertTrue(Files.exists(libFolder.resolve("minho-boot-1.0-SNAPSHOT.jar")));
         Assertions.assertTrue(Files.exists(libFolder.resolve("minho-http-1.0-SNAPSHOT.jar")));
-        Assertions.assertTrue(Files.exists(libFolder.resolve("jetty-server-11.0.9.jar")));
+        Assertions.assertTrue(Files.exists(libFolder.resolve("minho-rest-1.0-SNAPSHOT.jar")));
+        Assertions.assertTrue(Files.exists(libFolder.resolve("jetty-server-11.0.12.jar")));
         Assertions.assertTrue(Files.exists(libFolder.resolve("commons-lang-2.6.jar")));
     }
 
     @Test
-    @Disabled("Failing on GH Action")
     public void createRuntimeJarTest() throws Exception {
         Map<String, Object> properties = new HashMap<>();
         properties.put("base.directory", "target/runtime/test-runtime-jar");

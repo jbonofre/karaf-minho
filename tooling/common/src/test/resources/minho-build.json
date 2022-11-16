@@ -5,6 +5,9 @@
     "include.transitive": true
   },
   "dependencies": [
-    "minho:minho-boot", "minho:minho-http", "mvn:commons-lang/commons-lang/2.6"
+    "minho:minho-boot",
+    "minho:minho-http",
+    "minho:minho-rest",
+    "mvn:commons-lang/commons-lang/2.6"
   ]
 }
